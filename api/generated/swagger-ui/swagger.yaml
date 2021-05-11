@@ -1,0 +1,175 @@
+---
+swagger: "2.0"
+info:
+  description: "API to manage urban traffic visualizer UI"
+  version: "0.0.1"
+  title: "Urban Traffic Visualizer"
+  contact:
+    name: "Alessio De Fabio"
+    email: "s3231494@studenti.unige.it"
+host: "tbd"
+basePath: "/urban-traffic/visualizer/manager/api"
+tags:
+- name: "Render API"
+- name: "v1"
+  description: "the v1 API"
+schemes:
+- "http"
+paths:
+  /v1/render:
+    post:
+      tags:
+      - "Render API"
+      summary: "Methods called by visualize in order to render current simulation"
+      description: "Method called by visualize in order to render current simulation"
+      operationId: "renderSimulation"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "file"
+        in: "formData"
+        description: "file detail"
+        required: true
+        type: "file"
+      - name: "file"
+        in: "formData"
+        description: "file detail"
+        required: true
+        type: "file"
+      - name: "file"
+        in: "formData"
+        description: "file detail"
+        required: true
+        type: "file"
+      responses:
+        200:
+          description: "Response with simulation"
+          schema:
+            $ref: "#/definitions/Simulation"
+        400:
+          description: "The request was invalid or cannot be otherwise served."
+        404:
+          description: "The device or Touchpoint is not configured"
+        500:
+          description: "Something is broken."
+        503:
+          description: "The server is up, but overloaded with requests. Try again\
+            \ later."
+definitions:
+  Direction:
+    type: "object"
+    properties:
+      junctionId:
+        type: "string"
+      from:
+        type: "string"
+      to:
+        type: "string"
+      numOfMovingCars:
+        type: "integer"
+        format: "int32"
+  Error:
+    type: "object"
+    properties:
+      code:
+        type: "string"
+      message:
+        type: "string"
+      detail:
+        type: "string"
+  Junction:
+    type: "object"
+    properties:
+      junctionId:
+        type: "string"
+      associatedLinks:
+        type: "array"
+        description: "associated links identifier"
+        items:
+          type: "string"
+      isControlled:
+        type: "boolean"
+      controlledBy:
+        type: "array"
+        description: "stages idenfier that control this junction"
+        items:
+          type: "string"
+  JunctionOccupancy:
+    type: "object"
+    properties:
+      junctionId:
+        type: "string"
+      occupancy:
+        type: "number"
+        format: "float"
+    description: "number of cars that occupy the related junction"
+  Link:
+    type: "object"
+    properties:
+      linkId:
+        type: "string"
+      capacity:
+        type: "number"
+        format: "float"
+      associatedJunctions:
+        type: "array"
+        description: "junction identifiers that are connected with this link"
+        items:
+          type: "string"
+  LinkOccupancy:
+    type: "object"
+    properties:
+      linkId:
+        type: "string"
+      occupancy:
+        type: "number"
+        format: "float"
+    description: "number of cars that occupy the related link"
+  PlannerResult:
+    type: "object"
+    properties:
+      instant:
+        type: "number"
+        description: "instant of simulation misured in 1 second"
+      switchPhase:
+        $ref: "#/definitions/SwitchedStage"
+      linksOccupancy:
+        type: "array"
+        items:
+          $ref: "#/definitions/LinkOccupancy"
+      junctionOccupancy:
+        type: "array"
+        items:
+          $ref: "#/definitions/JunctionOccupancy"
+      directions:
+        type: "array"
+        items:
+          $ref: "#/definitions/Direction"
+    description: "the planner output"
+  Simulation:
+    type: "object"
+    properties:
+      junctions:
+        type: "array"
+        description: "the junctions with links"
+        items:
+          $ref: "#/definitions/Junction"
+      links:
+        type: "array"
+        description: "the links that build the map"
+        items:
+          $ref: "#/definitions/Link"
+      plannerResult:
+        type: "array"
+        items:
+          $ref: "#/definitions/PlannerResult"
+  SwitchedStage:
+    type: "object"
+    properties:
+      junctionId:
+        type: "string"
+      stageId:
+        type: "string"
+    description: "stage switched of by the planner before the max green time is reached"

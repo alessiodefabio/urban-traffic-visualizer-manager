@@ -1,0 +1,4 @@
+com\unige\urbantraffic\visualizer\manager\UrbanTrafficVisualizerManagerApp.class
+com\unige\urbantraffic\visualizer\manager\api\config\SwaggerDocumentationConfig.class
+com\unige\urbantraffic\visualizer\manager\api\config\HomeController.class
+com\unige\urbantraffic\visualizer\manager\api\v1\interfaces\UrbanTrafficVisualizerManagerApi.class

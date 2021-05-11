@@ -1,0 +1,10 @@
+com\unige\urbantraffic\visualizer\manager\model\v1\Error.class
+com\unige\urbantraffic\visualizer\manager\model\v1\LinkOccupancy.class
+com\unige\urbantraffic\visualizer\manager\model\v1\Link.class
+com\unige\urbantraffic\visualizer\manager\model\v1\Direction.class
+com\unige\urbantraffic\visualizer\manager\model\v1\SwitchedStage.class
+com\unige\urbantraffic\visualizer\manager\model\v1\Errors.class
+com\unige\urbantraffic\visualizer\manager\model\v1\PlannerResult.class
+com\unige\urbantraffic\visualizer\manager\model\v1\Junction.class
+com\unige\urbantraffic\visualizer\manager\model\v1\JunctionOccupancy.class
+com\unige\urbantraffic\visualizer\manager\model\v1\Simulation.class

@@ -1,0 +1,39 @@
+Configuration:
+  name: default
+  Appenders:
+    Console:
+      name: Console
+      PatternLayout:
+        pattern:
+          ""%highlight{%d{HH:mm:ss.SSS} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=black, DEBUG=green bold, TRACE=blue}]
+          - %m%n"
+      target: SYSTEM_OUT
+
+  Loggers:
+    Root:
+      level: INFO
+      AppenderRef:
+        - ref: Console
+    Logger:
+
+      - name: org.springframework.boot
+        level: WARN
+        additivity: false
+        AppenderRef:
+          - ref: Console
+      - name: org.springframework.core
+        level: ERROR
+        additivity: false
+        AppenderRef:
+          - ref: Console
+      - name: org.springframework.web
+        level: INFO
+        additivity: false
+        AppenderRef:
+          - ref: Console
+      - name: com.unige.urbantraffic.visualizer.manager
+        level: INFO
+        additivity: false
+        AppenderRef:
+          - ref: Console
+          - ref: Kafka

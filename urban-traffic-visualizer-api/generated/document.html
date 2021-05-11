@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<title>API Document</title>
+
+<xmp theme="united" style="display:none;">
+#Urban Traffic Visualizer
+
+
+## HTTP://tbd/urban-traffic/visualizer/manager/api
+
+
+API to manage urban traffic visualizer UI
+
+
+[**Contact the developer**](mailto:s3231494@studenti.unige.it)
+
+
+**Version** 0.0.1
+
+[**Terms of Service**]()
+
+
+
+
+
+
+
+
+
+
+
+
+# APIs
+
+
+## /v1/render
+
+
+
+
+
+
+### POST
+
+
+<a id="renderSimulation">Methods called by visualize in order to render current simulation</a>
+
+Method called by visualize in order to render current simulation
+
+
+
+
+
+
+
+#### Request
+
+
+**Content-Type: ** multipart/form-data
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>file</th>
+    <td>formData</td>
+    <td>yes</td>
+    <td>file detail</td>
+    <td> - </td>
+
+    
+            <td>file </td>
+    
+
+</tr>
+
+<tr>
+    <th>file</th>
+    <td>formData</td>
+    <td>yes</td>
+    <td>file detail</td>
+    <td> - </td>
+
+    
+            <td>file </td>
+    
+
+</tr>
+
+<tr>
+    <th>file</th>
+    <td>formData</td>
+    <td>yes</td>
+    <td>file detail</td>
+    <td> - </td>
+
+    
+            <td>file </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Response with simulation | <a href="#/definitions/Simulation">Simulation</a>|
+| 400    | The request was invalid or cannot be otherwise served. |  - |
+| 404    | The device or Touchpoint is not configured |  - |
+| 500    | Something is broken. |  - |
+| 503    | The server is up, but overloaded with requests. Try again later. |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Definitions
+
+## <a name="/definitions/Direction">Direction</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>junctionId</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>from</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>to</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>numOfMovingCars</td>
+            <td>
+                
+                    
+                    integer (int32)
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/Error">Error</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>code</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>message</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>detail</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/Junction">Junction</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>junctionId</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>associatedLinks</td>
+            <td>
+                
+                
+                array[string]
+                
+            </td>
+            <td>optional</td>
+            <td>associated links identifier</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>isControlled</td>
+            <td>
+                
+                    
+                    boolean
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>controlledBy</td>
+            <td>
+                
+                
+                array[string]
+                
+            </td>
+            <td>optional</td>
+            <td>stages idenfier that control this junction</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/JunctionOccupancy">JunctionOccupancy</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>junctionId</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>occupancy</td>
+            <td>
+                
+                    
+                    number (float)
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/Link">Link</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>linkId</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>capacity</td>
+            <td>
+                
+                    
+                    number (float)
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>associatedJunctions</td>
+            <td>
+                
+                
+                array[string]
+                
+            </td>
+            <td>optional</td>
+            <td>junction identifiers that are connected with this link</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/LinkOccupancy">LinkOccupancy</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>linkId</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>occupancy</td>
+            <td>
+                
+                    
+                    number (float)
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/PlannerResult">PlannerResult</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>instant</td>
+            <td>
+                
+                    
+                    number
+                
+            </td>
+            <td>optional</td>
+            <td>instant of simulation misured in 1 second</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>switchPhase</td>
+            <td>
+                
+                    <a href="#/definitions/SwitchedStage">SwitchedStage</a>
+                    
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>linksOccupancy</td>
+            <td>
+                
+                
+                    array[<a href="#/definitions/LinkOccupancy">LinkOccupancy</a>]
+                
+                
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>junctionOccupancy</td>
+            <td>
+                
+                
+                    array[<a href="#/definitions/JunctionOccupancy">JunctionOccupancy</a>]
+                
+                
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>directions</td>
+            <td>
+                
+                
+                    array[<a href="#/definitions/Direction">Direction</a>]
+                
+                
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/Simulation">Simulation</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>junctions</td>
+            <td>
+                
+                
+                    array[<a href="#/definitions/Junction">Junction</a>]
+                
+                
+                
+            </td>
+            <td>optional</td>
+            <td>the junctions with links</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>links</td>
+            <td>
+                
+                
+                    array[<a href="#/definitions/Link">Link</a>]
+                
+                
+                
+            </td>
+            <td>optional</td>
+            <td>the links that build the map</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>plannerResult</td>
+            <td>
+                
+                
+                    array[<a href="#/definitions/PlannerResult">PlannerResult</a>]
+                
+                
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/SwitchedStage">SwitchedStage</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>junctionId</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>stageId</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>

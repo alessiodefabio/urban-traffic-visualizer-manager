@@ -1,0 +1,14 @@
+application:
+  name: UrbanTrafficVisualizerManager
+server:
+  port: 8080
+  servlet:
+    contextPath: /urban-traffic/visualizer/manager/api
+  compression:
+    enabled: true
+    mime-types: application/json
+    min-response-size: 1024
+
+spring:
+  jackson:
+    default-property-inclusion: non-null
