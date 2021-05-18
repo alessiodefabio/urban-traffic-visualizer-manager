@@ -15,8 +15,6 @@ import java.io.IOException;
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @ExceptionHandler(value = {IOException.class})
     protected ResponseEntity<Object> handleIOException(RuntimeException ex, WebRequest request){
         String bodyOfResponse = "Unable to read input file provided";
