@@ -31,9 +31,9 @@ Configuration:
         additivity: false
         AppenderRef:
           - ref: Console
-      - name: com.unige.urbantraffic.visualizer.manager
+      - name: com.hitaci
         level: INFO
         additivity: false
         AppenderRef:
           - ref: Console
-          - ref: Kafka
+

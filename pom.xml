@@ -31,6 +31,7 @@
         <com.fasterxml.jackson>2.9.7</com.fasterxml.jackson>
         <org.projectlombok.version>1.18.20</org.projectlombok.version>
         <org.antlr.version>4.7.1</org.antlr.version>
+        <org.ojalgo.version>48.4.2</org.ojalgo.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -135,6 +136,19 @@
                 <artifactId>antlr4-runtime</artifactId>
                 <version>${org.antlr.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.ojalgo/ojalgo -->
+            <dependency>
+                <groupId>org.ojalgo</groupId>
+                <artifactId>ojalgo</artifactId>
+                <version>${org.ojalgo.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <build>
@@ -149,7 +163,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-
                 <dependencies>
                     <dependency>
                         <groupId>org.junit.platform</groupId>

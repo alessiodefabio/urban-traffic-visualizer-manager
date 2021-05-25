@@ -5,7 +5,6 @@ import lombok.*;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor
